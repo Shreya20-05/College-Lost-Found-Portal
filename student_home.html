@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Lost & Found</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% include 'student_navbar.html' %}
+    <main class="container">
+        <div class="home-content">
+            <h1>Welcome to the College Lost & Found Portal</h1>
+            <p><b>•</b> Here at our college, we believe in fostering a supportive and close-knit community. Beyond academic excellence and state-of-the-art facilities, we also understand the small, everyday challenges that can sometimes arise. Losing a cherished item or finding something valuable that belongs to another student can be a stressful or rewarding experience, and this portal is designed to make that process as smooth as possible.<br>
+<br><b>•</b> Our dedicated Lost & Found Portal serves as the central hub for our entire college community. Whether you've misplaced your favorite textbook, a crucial set of keys, an ID card, or perhaps stumbled upon an item someone else is surely missing, this platform is here to connect you. We aim to reunite owners with their lost possessions efficiently and help those who find items do the right thing with ease.<br>
+<br><b>•</b> We encourage all students and faculty to utilize this resource. If you've lost something, don't despair! Report it here with as much detail as possible. If you've found an item, you can be a hero by submitting a report and helping it find its way home. Your participation strengthens our community and helps make our campus an even better place.<br>
+<br><b>•</b> To begin, simply use the "Report an Item" section to share details of a lost or found item. You can also browse "Community Reports" to see what others have posted, increasing the chances of a successful reunion.<br></p>
+            
+            <a href="{{ url_for('report_page') }}" class="btn-primary">Report an Item</a>
+        </div>
+    </main>
+</body>
+</html>

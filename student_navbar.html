@@ -1,0 +1,14 @@
+<header class="student-header">
+    <div class="logo">
+        <a href="{{ url_for('student_home') }}">LOST AND FOUND PORTAL</a>
+    </div>
+    <nav class="main-nav">
+        <a href="{{ url_for('student_home') }}">Home</a>
+        <a href="{{ url_for('report_page') }}">Report</a>
+        <a href="{{ url_for('my_reports') }}">My Reports</a>
+        <a href="{{ url_for('community_reports') }}">Community Reports</a>
+    </nav>
+    <div class="user-info">
+        Welcome, <strong>{{ username }}</strong>! | <a href="/logout">Logout</a>
+    </div>
+</header>

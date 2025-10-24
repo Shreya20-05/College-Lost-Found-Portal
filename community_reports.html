@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Add some basic styles for the search/filter area */
+        .search-filter-container {
+            background-color: rgba(44, 44, 64, 0.9); /* Slightly opaque white */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px; /* Space between elements */
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            max-width: 900px; /* Adjust as needed */
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px; /* Add some space from the header */
+        }
+
+        .search-filter-container input[type="text"],
+        .search-filter-container select,
+        .search-filter-container button {
+            padding: 10px 15px;
+            border: 1px solid #0f0f0f;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-filter-container button {
+            background-color: #070038; /* A college-friendly purple */
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .search-filter-container button:hover {
+            background-color: #070038;;
+        }
+
+        .item-grid {
+            margin-top: 20px; /* Ensure space below search bar */
+        }
+    </style>
+</head>
+<body>
+    {% include 'student_navbar.html' %}
+    <main class="container">
+        <div class="search-filter-container">
+            <form action="{{ url_for('community_reports') }}" method="get" style="display: flex; gap: 10px; flex-wrap: wrap; width: 100%;">
+                <input type="text" name="query" placeholder="Search by description or location" value="{{ request.args.get('query', '') }}" style="flex-grow: 1;">
+                
+                <select name="item_type">
+                    <option value="">All Types</option>
+                    <option value="lost" {% if request.args.get('item_type') == 'lost' %}selected{% endif %}>Lost Items</option>
+                    <option value="found" {% if request.args.get('item_type') == 'found' %}selected{% endif %}>Found Items</option>
+                </select>
+
+                <button type="submit">Search & Filter</button>
+                <a href="{{ url_for('community_reports') }}" style="padding: 10px 15px; border-radius: 5px; background-color: #dc3545; color: white; text-decoration: none; display: flex; align-items: center;">Clear</a>
+            </form>
+        </div>
+
+        <div class="reports-section">
+            <h2>Community Lost & Found Items</h2>
+            <p class="section-description">This comprehensive board serves as the central public repository for every item that has been reported lost or found across the entire college campus, making it accessible to our full community.</p>
+            <div class="item-grid">
+                {% for item in items %}
+                <div class="item-card {{ item.item_type }}">
+                    <h4>{{ item.item_type.capitalize() }} Item</h4>
+                    {% if item.image_path %}
+                        <img src="{{ url_for('uploaded_file', filename=item.image_path) }}" alt="Item Image">
+                    {% endif %}
+                    <p><strong>Description:</strong> {{ item.description }}</p>
+                    <p><strong>Location:</strong> {{ item.location }}</p>
+                    
+                    <hr style="border-top: 1px solid #eee; margin: 10px 0;">
+
+                    <p><strong>Name:</strong> {{ item.student_name or 'N/A' }}</p>
+                    <p><strong>Department:</strong> {{ item.department or 'N/A' }}</p>
+                    <p><strong>Roll No:</strong> {{ item.roll_no or 'N/A' }}</p>
+                    <p><strong>Reported by (user):</strong> {{ item.username }}</p>
+                    
+                    <p class="date">Reported on: {{ item.report_date.strftime('%Y-%m-%d') }}</p>
+                </div>
+                {% else %}
+                <p>No items match your current search or filter criteria.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

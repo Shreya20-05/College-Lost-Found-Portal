@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% include 'student_navbar.html' %}
+    <main class="container">
+        <div class="reports-section">
+            <h2>My Reported Items</h2>
+            <div class="item-grid">
+                {% for item in items %}
+                <div class="item-card {{ item.item_type }} {% if item.status == 'found_by_owner' %}item-claimed{% endif %}">
+                    <h4>{{ item.item_type.capitalize() }} Item</h4>
+                    {% if item.image_path %}
+                        <img src="{{ url_for('uploaded_file', filename=item.image_path) }}" alt="Item Image">
+                    {% endif %}
+                    <p><strong>Description:</strong> {{ item.description }}</p>
+                    <p><strong>Location:</strong> {{ item.location }}</p>
+                    
+                    <!-- ADDED STUDENT DETAILS -->
+                    <p><strong>Name:</strong> {{ item.student_name }}</p>
+                    <p><strong>Department:</strong> {{ item.department }}</p>
+                    <p><strong>Roll No:</strong> {{ item.roll_no }}</p>
+                       
+                    <p class="date">Reported on: {{ item.report_date.strftime('%Y-%m-%d') }}</p>
+
+                    <!-- "I Found It!" Section -->
+                    {% if item.item_type == 'lost' and item.status == 'not_found' %}
+                    <form action="{{ url_for('update_status', item_id=item.id) }}" method="POST" class="status-form">
+                        <button type="submit" class="btn-found">I Found It!</button>
+                    </form>
+                    {% elif item.status == 'found_by_owner' %}
+                    <p class="status-claimed">✓ You marked this as found</p>
+                    {% endif %}
+                </div>
+                {% else %}
+                <p>You have not reported any items yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

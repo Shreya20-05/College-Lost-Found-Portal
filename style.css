@@ -1,0 +1,364 @@
+/* General Body Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-image: url('/static/images/c987c4c4f4be701a27f5cdf35c078cda.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fdfdfd;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Authentication Form Container (Login & Register) */
+.auth-container {
+    width: 320px;
+    margin: 180px auto;
+    padding: 25px;
+    background: #4c4349;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 7px;
+    text-align: center;
+}
+
+.auth-container h2 {
+    margin-bottom: 20px;
+    color: #05002a;
+}
+
+.auth-container input {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.auth-container button {
+    width: 100%;
+    padding: 12px;
+    background-color:#05002a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.auth-container button:hover {
+    background-color:#05002a;
+}
+
+.auth-container p {
+    margin-top: 15px;
+}
+
+.error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Student & Admin Header/Navbar Styles */
+.student-header, .admin-header {
+    background-color: transparent;
+    color: #e4e4e4;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+.student-header .logo a, .admin-header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ecebf1;
+}
+.student-header .main-nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #05002a;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.student-header .main-nav a:hover {
+    color:#fdfdff;
+}
+.student-header .user-info a, .admin-header .user-info a {
+    color: #05002a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Home Page Specific Styles */
+.home-content {
+    background-color: rgba(61, 61, 83, 0.9);
+    padding: 40px;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align:inherit;
+    box-shadow: 0 4px 10px rgba(60, 58, 58, 0.1);
+}
+.home-content h1 {
+    margin-bottom: 1rem;
+}
+.home-content p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+}
+.btn-primary {
+    display: inline-block;
+    padding: 12px 25px;
+    text-align:center;
+    background-color: #05002a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.btn-primary:hover {
+    background-color: #05002a;
+}
+
+/* Main Container */
+.container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* --- Styles for Report Page Toggles --- */
+.report-toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.report-toggle-buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #ddd;
+    background-color: #f8f9fa;
+    color: #555;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.report-toggle-buttons button.active, .report-toggle-buttons button:hover {
+    background-color: #dc88e9;
+    color: white;
+    border-color: #dc88e9;
+}
+
+/* Report Form Styles */
+.form-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+.form-container {
+    flex: 0 1 500px; /* Let it grow but have a base width */
+    min-width: 300px;
+    background:  rgba(61, 61, 83, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.form-container.hidden {
+    display: none;
+}
+.form-container h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.form-container textarea, .form-container input[type="text"], .form-container input[type="file"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #f9f8f8;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+.form-container button {
+    padding: 10px 15px;
+    background-color:#05002a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.form-container button:hover {
+    background-color: #05002a;
+}
+
+/* Item Grid and Card Styles */
+.reports-section h2 {
+    background: rgba(61, 61, 83, 0.9);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+.reports-section .section-description {
+    background: rgba(61, 61, 83, 0.9);
+    padding: 10px 20px;
+    border-radius: 5px;
+    display:grid;
+}
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.item-card {
+    background: rgba(56, 55, 55, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    border-left: 5px solid;
+    display: flex;
+    flex-direction: column;
+}
+.item-card.lost { border-color: #fa0019; }
+.item-card.found { border-color: #04ff29; }
+.item-card h4 { margin-top: 0; }
+.item-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    max-height: 200px;
+}
+.item-card p { margin: 5px 0; font-size: 0.95rem; }
+.item-card .date {
+    font-size: 0.8em;
+    color: #eaff07;
+    margin-top: 10px;
+}
+
+/* Styles for "I Found It!" button and status */
+.status-form {
+    margin-top: auto;
+    padding-top: 10px;
+}
+.btn-found {
+    width: 100%;
+    padding: 8px;
+    background-color: #05002a;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.btn-found:hover {
+    background-color: #05002a;
+}
+.status-claimed {
+    margin-top: auto;
+    padding: 8px;
+    background-color: #ffffff;
+    color: #05002a;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 4px;
+}
+.item-claimed {
+    opacity: 0.7;
+    background-color: #3a3b3c;
+}
+
+/* Admin Dashboard Specifics */
+.summary-section {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.summary-card {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.summary-card h2 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.summary-card p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 1rem;
+}
+.lost-summary h2 { color: #dc3545; }
+.found-summary h2 { color: #17a2b8; }
+
+.delete-btn {
+    width: 100%;
+    padding: 8px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 10px;
+}
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.admin-controls {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+.admin-controls button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: all 0.2s;
+}
+.admin-controls button.active, .admin-controls button:hover {
+    background-color: rgba(61, 61, 83, 0.9);
+    color: white;
+    border-color: rgba(61, 61, 83, 0.9);
+}
+
+
+/* Admin Dashboard Status Indicator */
+.admin-item-status {
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #fff;
+    margin-top: 10px;
+    display: inline-block;
+}
+.admin-item-status.found-by-owner { background-color: #28a745; }
+.admin-item-status.not-found { background-color: #ffc107; }
+

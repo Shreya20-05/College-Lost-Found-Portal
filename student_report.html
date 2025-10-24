@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% include 'student_navbar.html' %}
+    <main class="container">
+        <div class="form-section">
+            <div class="form-container">
+                <h3>I Lost Something</h3>
+                <form action="/report" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="type" value="lost">
+                    
+                    <textarea name="description" placeholder="Describe the item you lost..." required></textarea>
+                    <input type="text" name="location" placeholder="Last known location">
+                    
+                    <label for="lost-image">Upload Image:</label>
+                    <input type="file" id="lost-image" name="image" accept="image/*">
+                    
+                    <hr style="border: none; border-top: 1px solid #ddd; margin: 15px 0;">
+                    
+                    <input type="text" name="student_name" placeholder="Your Full Name" required>
+                    <input type="text" name="department" placeholder="Your Department" required>
+                    <input type="text" name="roll_no" placeholder="Your Roll No" required>
+                    
+                    <button type="submit">Report Lost Item</button>
+                </form>
+            </div>
+
+            <div class="form-container">
+                <h3>I Found Something</h3>
+                <form action="/report" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="type" value="found">
+                    
+                    <textarea name="description" placeholder="Describe the item you found..." required></textarea>
+                    <input type="text" name="location" placeholder="Where you found it">
+                    
+                    <label for="found-image">Upload Image:</label>
+                    <input type="file" id="found-image" name="image" accept="image/*">
+
+                    <hr style="border: none; border-top: 1px solid #ddd; margin: 15px 0;">
+
+                    <input type="text" name="student_name" placeholder="Name of Student (if known, or your name)" required>
+                    <input type="text" name="department" placeholder="Department of Student (if known)" required>
+                    <input type="text" name="roll_no" placeholder="Roll No of Student (if known)" required>
+
+                    <button type="submit">Report Found Item</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

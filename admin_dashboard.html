@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <div class="user-info">
+            Welcome, <strong>Admin</strong>! | <a href="/logout">Logout</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="admin-controls">
+            <button id="showAllBtn" class="active">All Items</button>
+            <button id="showLostBtn">Lost Items</button>
+            <button id="showFoundBtn">Found Items</button>
+        </div>
+        
+        <div class="reports-section">
+            <h2>All Reported Items</h2>
+            <div class="item-grid">
+                {% for item in items %}
+                <div class="item-card {{ item.item_type }}" data-type="{{ item.item_type }}">
+                    <h4>{{ item.item_type.capitalize() }} Item</h4>
+                    {% if item.image_path %}
+                        <img src="{{ url_for('uploaded_file', filename=item.image_path) }}" alt="Item Image">
+                    {% endif %}
+                    <p><strong>Description:</strong> {{ item.description }}</p>
+                    <p><strong>Location:</strong> {{ item.location }}</p>
+                    <p><strong>Reported by (user):</strong> {{ item.username }}</p>
+                    
+                    <!-- Displaying the new student details -->
+                    <p><strong>Student Name:</strong> {{ item.student_name }}</p>
+                    <p><strong>Department:</strong> {{ item.department }}</p>
+                    <p><strong>Roll No:</strong> {{ item.roll_no }}</p>
+
+                    <p class="date">Reported on: {{ item.report_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                    
+                    {% if item.status == 'found_by_owner' %}
+                        <span class="admin-item-status found-by-owner">✓ Found by Owner</span>
+                    {% elif item.item_type == 'lost' %}
+                         <span class="admin-item-status not-found">Still Lost</span>
+                    {% endif %}
+
+                    <form action="{{ url_for('delete_item', item_id=item.id) }}" method="POST" style="margin-top: auto;">
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                </div>
+                {% else %}
+                <p>No items have been reported yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
